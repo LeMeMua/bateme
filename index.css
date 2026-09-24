@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bglight: #002d72;
+  --color-redlight: #d50032;
+
+  --color-cream: #fdfdf7;
+  --color-wine: #7b1b29;
+
+  --color-hero: #0b2252;
+  --color-hero-light: #2a4b9c;
+}
+body {
+  margin: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
