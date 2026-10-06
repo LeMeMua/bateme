@@ -6,7 +6,8 @@ import Estadios from "./pages/Stadiums.jsx";
 import Galeria from "./pages/Gallery.jsx";
 import Trivia from "./pages/Trivia.jsx";
 import Estadisticas from "./pages/Stadistics.jsx";
-import ARCamera from "./pages/ArCamera.jsx";
+import MindAR from "./pages/ArCamera.jsx";
+import { Model } from "./assets/Models/batter.jsx";
 
 function PlaceholderPage({ title }) {
   return (
@@ -30,7 +31,7 @@ export default function App() {
         <Route path="/estadios" element={<Estadios />} />
         <Route path="/galeria" element={<Galeria />} />
         <Route path="/trivia" element={<Trivia />} />
-        <Route path="/ar-camera" element={<ARCamera />} />
+        <Route path="/ar-camera" element={<MindAR />} />
       </Routes>
     </>
   );
