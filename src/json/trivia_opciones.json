@@ -1,0 +1,979 @@
+{
+  "preguntas": [
+    {
+      "id": 1,
+      "division": "Este",
+      "equipo": "Atlanta Braves",
+      "pregunta": "¿En qué año ganaron los Atlanta Braves su primera Serie Mundial desde que se establecieron en Atlanta?",
+      "opciones": [
+        "2007",
+        "1995",
+        "2003",
+        "1997"
+      ],
+      "respuestaCorrecta": "1995"
+    },
+    {
+      "id": 2,
+      "division": "Este",
+      "equipo": "Atlanta Braves",
+      "pregunta": "¿Qué legendario jugador de los Braves terminó su carrera con 755 jonrones?",
+      "opciones": [
+        "Robin Yount",
+        "Giancarlo Stanton",
+        "Hank Aaron",
+        "Max Scherzer"
+      ],
+      "respuestaCorrecta": "Hank Aaron"
+    },
+    {
+      "id": 3,
+      "division": "Este",
+      "equipo": "Atlanta Braves",
+      "pregunta": "¿Cómo se llama el estadio actual de los Atlanta Braves?",
+      "opciones": [
+        "Citi Field",
+        "Progressive Field",
+        "Great American Ball Park",
+        "Truist Park"
+      ],
+      "respuestaCorrecta": "Truist Park"
+    },
+    {
+      "id": 4,
+      "division": "Este",
+      "equipo": "Atlanta Braves",
+      "pregunta": "¿Qué lanzador de los Braves ganó cuatro premios Cy Young consecutivos entre 1992 y 1995?",
+      "opciones": [
+        "Joe Morgan",
+        "Curt Schilling",
+        "Greg Maddux",
+        "Anthony Rizzo"
+      ],
+      "respuestaCorrecta": "Greg Maddux"
+    },
+    {
+      "id": 5,
+      "division": "Este",
+      "equipo": "Atlanta Braves",
+      "pregunta": "¿Qué apodo recibió Hank Aaron por su destacada trayectoria con los Braves?",
+      "opciones": [
+        "The Flying Hawaiian",
+        "Amazin' Mets",
+        "The Freak",
+        "Hammerin' Hank"
+      ],
+      "respuestaCorrecta": "Hammerin' Hank"
+    },
+    {
+      "id": 6,
+      "division": "Este",
+      "equipo": "Miami Marlins",
+      "pregunta": "¿En qué año ganaron los Marlins su primera Serie Mundial?",
+      "opciones": [
+        "2001",
+        "2007",
+        "1995",
+        "1997"
+      ],
+      "respuestaCorrecta": "1997"
+    },
+    {
+      "id": 7,
+      "division": "Este",
+      "equipo": "Miami Marlins",
+      "pregunta": "¿Qué jugador conectó el hit de oro que decidió el Juego 7 de la Serie Mundial de 1997?",
+      "opciones": [
+        "Barry Bonds",
+        "Édgar Rentería",
+        "Clayton Kershaw",
+        "Buster Posey"
+      ],
+      "respuestaCorrecta": "Édgar Rentería"
+    },
+    {
+      "id": 8,
+      "division": "Este",
+      "equipo": "Miami Marlins",
+      "pregunta": "¿Contra qué equipo ganaron los Marlins la Serie Mundial de 2003?",
+      "opciones": [
+        "New York Yankees",
+        "Houston Astros",
+        "Chicago White Sox",
+        "New York Mets"
+      ],
+      "respuestaCorrecta": "New York Yankees"
+    },
+    {
+      "id": 9,
+      "division": "Este",
+      "equipo": "Miami Marlins",
+      "pregunta": "¿Qué jugador de los Marlins fue elegido MVP de la Serie Mundial de 2003?",
+      "opciones": [
+        "Steve Carlton",
+        "Josh Beckett",
+        "Pete Rose",
+        "Stephen Strasburg"
+      ],
+      "respuestaCorrecta": "Josh Beckett"
+    },
+    {
+      "id": 10,
+      "division": "Este",
+      "equipo": "Miami Marlins",
+      "pregunta": "¿Qué nombre utilizaba originalmente la franquicia antes de adoptar el nombre Miami Marlins?",
+      "opciones": [
+        "Brooklyn Dodgers",
+        "Boston Braves",
+        "Montreal Expos",
+        "Florida Marlins"
+      ],
+      "respuestaCorrecta": "Florida Marlins"
+    },
+    {
+      "id": 11,
+      "division": "Este",
+      "equipo": "New York Mets",
+      "pregunta": "¿En qué año ganaron los New York Mets su primera Serie Mundial?",
+      "opciones": [
+        "1982",
+        "1975",
+        "1969",
+        "1984"
+      ],
+      "respuestaCorrecta": "1969"
+    },
+    {
+      "id": 12,
+      "division": "Este",
+      "equipo": "New York Mets",
+      "pregunta": "¿Qué apodo recibió el equipo campeón de los Mets de 1969?",
+      "opciones": [
+        "Miracle Mets",
+        "The Big Unit",
+        "The Great One",
+        "El \"Called Shot\""
+      ],
+      "respuestaCorrecta": "Miracle Mets"
+    },
+    {
+      "id": 13,
+      "division": "Este",
+      "equipo": "New York Mets",
+      "pregunta": "¿Cómo se llama el estadio actual de los New York Mets?",
+      "opciones": [
+        "Citi Field",
+        "Progressive Field",
+        "Oracle Park",
+        "Chase Field"
+      ],
+      "respuestaCorrecta": "Citi Field"
+    },
+    {
+      "id": 14,
+      "division": "Este",
+      "equipo": "New York Mets",
+      "pregunta": "¿Qué lanzador de los Mets lanzó el primer juego sin hit ni carrera individual de la franquicia en 2012?",
+      "opciones": [
+        "Tom Glavine",
+        "Steve Bedrosian",
+        "Johan Santana",
+        "Anthony Rizzo"
+      ],
+      "respuestaCorrecta": "Johan Santana"
+    },
+    {
+      "id": 15,
+      "division": "Este",
+      "equipo": "New York Mets",
+      "pregunta": "¿Contra qué equipo ganaron los Mets la Serie Mundial de 1986?",
+      "opciones": [
+        "Philadelphia Phillies",
+        "Baltimore Orioles",
+        "Boston Red Sox",
+        "Texas Rangers"
+      ],
+      "respuestaCorrecta": "Boston Red Sox"
+    },
+    {
+      "id": 16,
+      "division": "Este",
+      "equipo": "Philadelphia Phillies",
+      "pregunta": "¿En qué año ganaron los Philadelphia Phillies su primera Serie Mundial?",
+      "opciones": [
+        "1979",
+        "1986",
+        "1980",
+        "1969"
+      ],
+      "respuestaCorrecta": "1980"
+    },
+    {
+      "id": 17,
+      "division": "Este",
+      "equipo": "Philadelphia Phillies",
+      "pregunta": "¿Qué exjugador de los Phillies es conocido como 'The Flying Hawaiian'?",
+      "opciones": [
+        "Shane Victorino",
+        "Barry Bonds",
+        "Roberto Clemente",
+        "David Wright"
+      ],
+      "respuestaCorrecta": "Shane Victorino"
+    },
+    {
+      "id": 18,
+      "division": "Este",
+      "equipo": "Philadelphia Phillies",
+      "pregunta": "¿Cómo se llama el estadio de los Philadelphia Phillies?",
+      "opciones": [
+        "Comerica Park",
+        "Truist Park",
+        "Citizens Bank Park",
+        "Nationals Park"
+      ],
+      "respuestaCorrecta": "Citizens Bank Park"
+    },
+    {
+      "id": 19,
+      "division": "Este",
+      "equipo": "Philadelphia Phillies",
+      "pregunta": "¿Qué lanzador de los Phillies ganó el premio Cy Young de la Liga Nacional en 1987?",
+      "opciones": [
+        "Steve Bedrosian",
+        "Randy Johnson",
+        "Hank Aaron",
+        "Giancarlo Stanton"
+      ],
+      "respuestaCorrecta": "Steve Bedrosian"
+    },
+    {
+      "id": 20,
+      "division": "Este",
+      "equipo": "Philadelphia Phillies",
+      "pregunta": "¿Contra qué equipo ganaron los Phillies la Serie Mundial de 2008?",
+      "opciones": [
+        "Chicago White Sox",
+        "Detroit Tigers",
+        "Tampa Bay Rays",
+        "New York Mets"
+      ],
+      "respuestaCorrecta": "Tampa Bay Rays"
+    },
+    {
+      "id": 21,
+      "division": "Este",
+      "equipo": "Washington Nationals",
+      "pregunta": "¿En qué año ganaron los Washington Nationals su primera Serie Mundial?",
+      "opciones": [
+        "2001",
+        "2019",
+        "2016",
+        "2010"
+      ],
+      "respuestaCorrecta": "2019"
+    },
+    {
+      "id": 22,
+      "division": "Este",
+      "equipo": "Washington Nationals",
+      "pregunta": "¿Contra qué equipo ganaron los Nationals la Serie Mundial de 2019?",
+      "opciones": [
+        "Houston Astros",
+        "Miami Marlins",
+        "Baltimore Orioles",
+        "Boston Red Sox"
+      ],
+      "respuestaCorrecta": "Houston Astros"
+    },
+    {
+      "id": 23,
+      "division": "Este",
+      "equipo": "Washington Nationals",
+      "pregunta": "¿Qué jugador fue nombrado MVP de la Serie Mundial de 2019?",
+      "opciones": [
+        "Stephen Strasburg",
+        "Tom Seaver",
+        "Steve Bedrosian",
+        "Luis Gonzalez"
+      ],
+      "respuestaCorrecta": "Stephen Strasburg"
+    },
+    {
+      "id": 24,
+      "division": "Este",
+      "equipo": "Washington Nationals",
+      "pregunta": "¿Cómo se llama el estadio de los Washington Nationals?",
+      "opciones": [
+        "Truist Park",
+        "Nationals Park",
+        "Dodger Stadium",
+        "PNC Park"
+      ],
+      "respuestaCorrecta": "Nationals Park"
+    },
+    {
+      "id": 25,
+      "division": "Este",
+      "equipo": "Washington Nationals",
+      "pregunta": "¿Qué jugador de los Nationals ganó el premio MVP de la Liga Nacional en 2015?",
+      "opciones": [
+        "Fernando Valenzuela",
+        "Curt Schilling",
+        "Bryce Harper",
+        "Édgar Rentería"
+      ],
+      "respuestaCorrecta": "Bryce Harper"
+    },
+    {
+      "id": 26,
+      "division": "Central",
+      "equipo": "Chicago Cubs",
+      "pregunta": "¿En qué año rompieron los Chicago Cubs una sequía de 108 años sin ganar la Serie Mundial?",
+      "opciones": [
+        "2011",
+        "2024",
+        "1997",
+        "2016"
+      ],
+      "respuestaCorrecta": "2016"
+    },
+    {
+      "id": 27,
+      "division": "Central",
+      "equipo": "Chicago Cubs",
+      "pregunta": "¿Contra qué equipo ganaron los Cubs la Serie Mundial de 2016?",
+      "opciones": [
+        "Tampa Bay Rays",
+        "Philadelphia Phillies",
+        "St. Louis Cardinals",
+        "Cleveland Indians"
+      ],
+      "respuestaCorrecta": "Cleveland Indians"
+    },
+    {
+      "id": 28,
+      "division": "Central",
+      "equipo": "Chicago Cubs",
+      "pregunta": "¿Cómo se llama el histórico estadio de los Chicago Cubs?",
+      "opciones": [
+        "Citizens Bank Park",
+        "Nationals Park",
+        "Citi Field",
+        "Wrigley Field"
+      ],
+      "respuestaCorrecta": "Wrigley Field"
+    },
+    {
+      "id": 29,
+      "division": "Central",
+      "equipo": "Chicago Cubs",
+      "pregunta": "¿Qué jugador de los Cubs ganó el MVP de la Liga Nacional en 2016?",
+      "opciones": [
+        "Barry Bonds",
+        "Tom Glavine",
+        "Bob Gibson",
+        "Kris Bryant"
+      ],
+      "respuestaCorrecta": "Kris Bryant"
+    },
+    {
+      "id": 30,
+      "division": "Central",
+      "equipo": "Chicago Cubs",
+      "pregunta": "¿Qué famoso jonrón de 1932 se asocia con Babe Ruth en Wrigley Field?",
+      "opciones": [
+        "Truist Park",
+        "Progressive Field",
+        "El 'Called Shot'",
+        "The Splendid Splinter"
+      ],
+      "respuestaCorrecta": "El 'Called Shot'"
+    },
+    {
+      "id": 31,
+      "division": "Central",
+      "equipo": "Cincinnati Reds",
+      "pregunta": "¿En qué año ganaron los Cincinnati Reds la Serie Mundial de 1975?",
+      "opciones": [
+        "1975",
+        "1990",
+        "1959",
+        "1969"
+      ],
+      "respuestaCorrecta": "1975"
+    },
+    {
+      "id": 32,
+      "division": "Central",
+      "equipo": "Cincinnati Reds",
+      "pregunta": "¿Qué jugador de los Cincinnati Reds fue nombrado MVP de la Serie Mundial de 1975?",
+      "opciones": [
+        "Robin Yount",
+        "Pete Rose",
+        "Albert Pujols",
+        "Roberto Clemente"
+      ],
+      "respuestaCorrecta": "Pete Rose"
+    },
+    {
+      "id": 33,
+      "division": "Central",
+      "equipo": "Cincinnati Reds",
+      "pregunta": "¿Cómo se llama el estadio actual de los Cincinnati Reds?",
+      "opciones": [
+        "Fenway Park",
+        "Great American Ball Park",
+        "American Family Field",
+        "Petco Park"
+      ],
+      "respuestaCorrecta": "Great American Ball Park"
+    },
+    {
+      "id": 34,
+      "division": "Central",
+      "equipo": "Cincinnati Reds",
+      "pregunta": "¿Qué miembro del Salón de la Fama de los Reds es conocido como 'The Big Red Machine' por formar parte de aquella gran era?",
+      "opciones": [
+        "Buster Posey",
+        "Curt Schilling",
+        "Steve Carlton",
+        "Johnny Bench"
+      ],
+      "respuestaCorrecta": "Johnny Bench"
+    },
+    {
+      "id": 35,
+      "division": "Central",
+      "equipo": "Cincinnati Reds",
+      "pregunta": "¿En qué año ganaron los Reds la Serie Mundial de manera invicta, barriendo a los Oakland Athletics?",
+      "opciones": [
+        "1990",
+        "1984",
+        "1980",
+        "1995"
+      ],
+      "respuestaCorrecta": "1990"
+    },
+    {
+      "id": 36,
+      "division": "Central",
+      "equipo": "Milwaukee Brewers",
+      "pregunta": "¿En qué año llegaron los Milwaukee Brewers por primera vez a la Serie Mundial?",
+      "opciones": [
+        "1984",
+        "1990",
+        "1979",
+        "1982"
+      ],
+      "respuestaCorrecta": "1982"
+    },
+    {
+      "id": 37,
+      "division": "Central",
+      "equipo": "Milwaukee Brewers",
+      "pregunta": "¿Contra qué equipo jugaron los Brewers la Serie Mundial de 1982?",
+      "opciones": [
+        "New York Mets",
+        "St. Louis Cardinals",
+        "Houston Astros",
+        "Miami Marlins"
+      ],
+      "respuestaCorrecta": "St. Louis Cardinals"
+    },
+    {
+      "id": 38,
+      "division": "Central",
+      "equipo": "Milwaukee Brewers",
+      "pregunta": "¿Cómo se llama el estadio actual de los Milwaukee Brewers?",
+      "opciones": [
+        "Chase Field",
+        "American Family Field",
+        "Minute Maid Park",
+        "PNC Park"
+      ],
+      "respuestaCorrecta": "American Family Field"
+    },
+    {
+      "id": 39,
+      "division": "Central",
+      "equipo": "Milwaukee Brewers",
+      "pregunta": "¿Qué miembro del Salón de la Fama fue una de las principales estrellas de los Brewers en la década de 1980?",
+      "opciones": [
+        "Trevor Hoffman",
+        "Madison Bumgarner",
+        "Steve Bedrosian",
+        "Robin Yount"
+      ],
+      "respuestaCorrecta": "Robin Yount"
+    },
+    {
+      "id": 40,
+      "division": "Central",
+      "equipo": "Milwaukee Brewers",
+      "pregunta": "¿Qué jugador ganó dos premios MVP de la Liga Americana como miembro de los Brewers?",
+      "opciones": [
+        "Randy Johnson",
+        "Robin Yount",
+        "Sandy Koufax",
+        "Paul Molitor"
+      ],
+      "respuestaCorrecta": "Robin Yount"
+    },
+    {
+      "id": 41,
+      "division": "Central",
+      "equipo": "Pittsburgh Pirates",
+      "pregunta": "¿En qué año ganaron los Pittsburgh Pirates la Serie Mundial por última vez?",
+      "opciones": [
+        "1979",
+        "1984",
+        "1986",
+        "1988"
+      ],
+      "respuestaCorrecta": "1979"
+    },
+    {
+      "id": 42,
+      "division": "Central",
+      "equipo": "Pittsburgh Pirates",
+      "pregunta": "¿Qué famoso jugador de los Pirates fue conocido como 'The Great One'?",
+      "opciones": [
+        "Hank Aaron",
+        "Roberto Clemente",
+        "Clayton Kershaw",
+        "Madison Bumgarner"
+      ],
+      "respuestaCorrecta": "Roberto Clemente"
+    },
+    {
+      "id": 43,
+      "division": "Central",
+      "equipo": "Pittsburgh Pirates",
+      "pregunta": "¿Cómo se llama el estadio actual de los Pittsburgh Pirates?",
+      "opciones": [
+        "PNC Park",
+        "LoanDepot Park",
+        "Wrigley Field",
+        "Citi Field"
+      ],
+      "respuestaCorrecta": "PNC Park"
+    },
+    {
+      "id": 44,
+      "division": "Central",
+      "equipo": "Pittsburgh Pirates",
+      "pregunta": "¿Qué jugador de los Pirates conectó el jonrón solitario que decidió el Juego 7 de la Serie Mundial de 1960?",
+      "opciones": [
+        "David Wright",
+        "Stan Musial",
+        "Barry Bonds",
+        "Bill Mazeroski"
+      ],
+      "respuestaCorrecta": "Bill Mazeroski"
+    },
+    {
+      "id": 45,
+      "division": "Central",
+      "equipo": "Pittsburgh Pirates",
+      "pregunta": "¿Contra qué equipo ganaron los Pirates la Serie Mundial de 1960?",
+      "opciones": [
+        "Chicago Cubs",
+        "Chicago White Sox",
+        "Houston Astros",
+        "New York Yankees"
+      ],
+      "respuestaCorrecta": "New York Yankees"
+    },
+    {
+      "id": 46,
+      "division": "Central",
+      "equipo": "St. Louis Cardinals",
+      "pregunta": "¿Cuántas Series Mundiales han ganado los St. Louis Cardinals?",
+      "opciones": [
+        "10",
+        "9",
+        "11",
+        "8"
+      ],
+      "respuestaCorrecta": "11"
+    },
+    {
+      "id": 47,
+      "division": "Central",
+      "equipo": "St. Louis Cardinals",
+      "pregunta": "¿Qué legendario jugador de los Cardinals es conocido como 'Stan the Man'?",
+      "opciones": [
+        "Stan Musial",
+        "Johan Santana",
+        "Steve Carlton",
+        "Hank Aaron"
+      ],
+      "respuestaCorrecta": "Stan Musial"
+    },
+    {
+      "id": 48,
+      "division": "Central",
+      "equipo": "St. Louis Cardinals",
+      "pregunta": "¿Cómo se llama el estadio actual de los St. Louis Cardinals?",
+      "opciones": [
+        "Citizens Bank Park",
+        "Busch Stadium",
+        "Great American Ball Park",
+        "Truist Park"
+      ],
+      "respuestaCorrecta": "Busch Stadium"
+    },
+    {
+      "id": 49,
+      "division": "Central",
+      "equipo": "St. Louis Cardinals",
+      "pregunta": "¿Qué jugador de los Cardinals ganó tres premios MVP de la Liga Nacional?",
+      "opciones": [
+        "Albert Pujols",
+        "Steve Carlton",
+        "Curt Schilling",
+        "Johnny Bench"
+      ],
+      "respuestaCorrecta": "Albert Pujols"
+    },
+    {
+      "id": 50,
+      "division": "Central",
+      "equipo": "St. Louis Cardinals",
+      "pregunta": "¿En qué año ganaron los Cardinals la Serie Mundial contra los Texas Rangers en una de las Series más dramáticas de la historia?",
+      "opciones": [
+        "2010",
+        "2011",
+        "1997",
+        "2020"
+      ],
+      "respuestaCorrecta": "2011"
+    },
+    {
+      "id": 51,
+      "division": "Oeste",
+      "equipo": "Arizona Diamondbacks",
+      "pregunta": "¿En qué año ganaron los Arizona Diamondbacks su primera Serie Mundial?",
+      "opciones": [
+        "2001",
+        "1986",
+        "2011",
+        "1988"
+      ],
+      "respuestaCorrecta": "2001"
+    },
+    {
+      "id": 52,
+      "division": "Oeste",
+      "equipo": "Arizona Diamondbacks",
+      "pregunta": "¿Contra qué equipo ganaron los Diamondbacks la Serie Mundial de 2001?",
+      "opciones": [
+        "Chicago White Sox",
+        "Chicago Cubs",
+        "Texas Rangers",
+        "New York Yankees"
+      ],
+      "respuestaCorrecta": "New York Yankees"
+    },
+    {
+      "id": 53,
+      "division": "Oeste",
+      "equipo": "Arizona Diamondbacks",
+      "pregunta": "¿Qué lanzador de los Diamondbacks fue nombrado MVP de la Serie Mundial de 2001?",
+      "opciones": [
+        "Randy Johnson y Curt Schilling",
+        "Curt Schilling y Luis Gonzalez",
+        "Randy Johnson y Luis Gonzalez",
+        "Randy Johnson y Brandon Webb"
+      ],
+      "respuestaCorrecta": "Randy Johnson y Curt Schilling"
+    },
+    {
+      "id": 54,
+      "division": "Oeste",
+      "equipo": "Arizona Diamondbacks",
+      "pregunta": "¿Cómo se llama el estadio de los Arizona Diamondbacks?",
+      "opciones": [
+        "Coors Field",
+        "Petco Park",
+        "Chase Field",
+        "Progressive Field"
+      ],
+      "respuestaCorrecta": "Chase Field"
+    },
+    {
+      "id": 55,
+      "division": "Oeste",
+      "equipo": "Arizona Diamondbacks",
+      "pregunta": "¿Qué jugador conectó el hit de oro que decidió el Juego 7 de la Serie Mundial de 2001?",
+      "opciones": [
+        "Barry Bonds",
+        "Curt Schilling",
+        "Luis Gonzalez",
+        "Paul Molitor"
+      ],
+      "respuestaCorrecta": "Luis Gonzalez"
+    },
+    {
+      "id": 56,
+      "division": "Oeste",
+      "equipo": "Colorado Rockies",
+      "pregunta": "¿En qué año llegaron los Colorado Rockies por primera vez a la Serie Mundial?",
+      "opciones": [
+        "2019",
+        "2014",
+        "2020",
+        "2007"
+      ],
+      "respuestaCorrecta": "2007"
+    },
+    {
+      "id": 57,
+      "division": "Oeste",
+      "equipo": "Colorado Rockies",
+      "pregunta": "¿Contra qué equipo jugaron los Rockies la Serie Mundial de 2007?",
+      "opciones": [
+        "San Francisco Giants",
+        "Chicago Cubs",
+        "Boston Red Sox",
+        "Detroit Tigers"
+      ],
+      "respuestaCorrecta": "Boston Red Sox"
+    },
+    {
+      "id": 58,
+      "division": "Oeste",
+      "equipo": "Colorado Rockies",
+      "pregunta": "¿Cómo se llama el estadio de los Colorado Rockies?",
+      "opciones": [
+        "Wrigley Field",
+        "Coors Field",
+        "Yankee Stadium",
+        "Dodger Stadium"
+      ],
+      "respuestaCorrecta": "Coors Field"
+    },
+    {
+      "id": 59,
+      "division": "Oeste",
+      "equipo": "Colorado Rockies",
+      "pregunta": "¿Qué exjugador de los Rockies ingresó al Salón de la Fama del Béisbol en 2020?",
+      "opciones": [
+        "Larry Walker",
+        "Steve Bedrosian",
+        "Joe Morgan",
+        "Giancarlo Stanton"
+      ],
+      "respuestaCorrecta": "Larry Walker"
+    },
+    {
+      "id": 60,
+      "division": "Oeste",
+      "equipo": "Colorado Rockies",
+      "pregunta": "¿Qué jugador de los Rockies ganó el premio MVP de la Liga Nacional en 1997?",
+      "opciones": [
+        "David Wright",
+        "Randy Johnson",
+        "Larry Walker",
+        "Albert Pujols"
+      ],
+      "respuestaCorrecta": "Larry Walker"
+    },
+    {
+      "id": 61,
+      "division": "Oeste",
+      "equipo": "Los Angeles Dodgers",
+      "pregunta": "¿En qué año ganaron los Los Angeles Dodgers su primera Serie Mundial después de mudarse a Los Ángeles?",
+      "opciones": [
+        "1982",
+        "1990",
+        "1959",
+        "1979"
+      ],
+      "respuestaCorrecta": "1959"
+    },
+    {
+      "id": 62,
+      "division": "Oeste",
+      "equipo": "Los Angeles Dodgers",
+      "pregunta": "¿Qué legendario lanzador de los Dodgers lanzó cuatro juegos sin hit ni carrera?",
+      "opciones": [
+        "Stephen Strasburg",
+        "Robin Yount",
+        "Sandy Koufax",
+        "Paul Molitor"
+      ],
+      "respuestaCorrecta": "Sandy Koufax"
+    },
+    {
+      "id": 63,
+      "division": "Oeste",
+      "equipo": "Los Angeles Dodgers",
+      "pregunta": "¿Cómo se llama el estadio de los Los Angeles Dodgers?",
+      "opciones": [
+        "Minute Maid Park",
+        "Oracle Park",
+        "Dodger Stadium",
+        "Chase Field"
+      ],
+      "respuestaCorrecta": "Dodger Stadium"
+    },
+    {
+      "id": 64,
+      "division": "Oeste",
+      "equipo": "Los Angeles Dodgers",
+      "pregunta": "¿Qué número de los Dodgers fue retirado en honor a Jackie Robinson?",
+      "opciones": [
+        "42",
+        "21",
+        "44",
+        "24"
+      ],
+      "respuestaCorrecta": "42"
+    },
+    {
+      "id": 65,
+      "division": "Oeste",
+      "equipo": "Los Angeles Dodgers",
+      "pregunta": "¿Qué jugador de los Dodgers ganó el premio MVP de la Liga Nacional en 2014?",
+      "opciones": [
+        "Trevor Hoffman",
+        "Clayton Kershaw",
+        "Willie Stargell",
+        "Fernando Valenzuela"
+      ],
+      "respuestaCorrecta": "Clayton Kershaw"
+    },
+    {
+      "id": 66,
+      "division": "Oeste",
+      "equipo": "San Diego Padres",
+      "pregunta": "¿En qué año llegaron los San Diego Padres por primera vez a la Serie Mundial?",
+      "opciones": [
+        "1982",
+        "1997",
+        "1984",
+        "1969"
+      ],
+      "respuestaCorrecta": "1984"
+    },
+    {
+      "id": 67,
+      "division": "Oeste",
+      "equipo": "San Diego Padres",
+      "pregunta": "¿Contra qué equipo jugaron los Padres la Serie Mundial de 1984?",
+      "opciones": [
+        "Chicago Cubs",
+        "Baltimore Orioles",
+        "Detroit Tigers",
+        "Atlanta Braves"
+      ],
+      "respuestaCorrecta": "Detroit Tigers"
+    },
+    {
+      "id": 68,
+      "division": "Oeste",
+      "equipo": "San Diego Padres",
+      "pregunta": "¿Cómo se llama el estadio actual de los San Diego Padres?",
+      "opciones": [
+        "Busch Stadium",
+        "Petco Park",
+        "Comerica Park",
+        "American Family Field"
+      ],
+      "respuestaCorrecta": "Petco Park"
+    },
+    {
+      "id": 69,
+      "division": "Oeste",
+      "equipo": "San Diego Padres",
+      "pregunta": "¿Qué miembro del Salón de la Fama de los Padres es conocido como 'Mr. Padre'?",
+      "opciones": [
+        "Hank Aaron",
+        "Tony Gwynn",
+        "Luis Gonzalez",
+        "Roberto Clemente"
+      ],
+      "respuestaCorrecta": "Tony Gwynn"
+    },
+    {
+      "id": 70,
+      "division": "Oeste",
+      "equipo": "San Diego Padres",
+      "pregunta": "¿Qué jugador de los Padres ganó ocho títulos de bateo de la Liga Nacional?",
+      "opciones": [
+        "Tony Gwynn",
+        "Barry Bonds",
+        "Sandy Koufax",
+        "Steve Bedrosian"
+      ],
+      "respuestaCorrecta": "Tony Gwynn"
+    },
+    {
+      "id": 71,
+      "division": "Oeste",
+      "equipo": "San Francisco Giants",
+      "pregunta": "¿En qué año ganaron los San Francisco Giants su primera Serie Mundial desde que se mudaron a San Francisco?",
+      "opciones": [
+        "2019",
+        "2011",
+        "2010",
+        "2007"
+      ],
+      "respuestaCorrecta": "2010"
+    },
+    {
+      "id": 72,
+      "division": "Oeste",
+      "equipo": "San Francisco Giants",
+      "pregunta": "¿Contra qué equipo ganaron los Giants la Serie Mundial de 2010?",
+      "opciones": [
+        "Tampa Bay Rays",
+        "Chicago Cubs",
+        "Texas Rangers",
+        "Detroit Tigers"
+      ],
+      "respuestaCorrecta": "Texas Rangers"
+    },
+    {
+      "id": 73,
+      "division": "Oeste",
+      "equipo": "San Francisco Giants",
+      "pregunta": "¿Cómo se llama el estadio de los San Francisco Giants?",
+      "opciones": [
+        "Progressive Field",
+        "Petco Park",
+        "Minute Maid Park",
+        "Oracle Park"
+      ],
+      "respuestaCorrecta": "Oracle Park"
+    },
+    {
+      "id": 74,
+      "division": "Oeste",
+      "equipo": "San Francisco Giants",
+      "pregunta": "¿Qué legendario jugador de los Giants es conocido por sus numerosos récords de jonrones y por ser apodado 'The Say Hey Kid'?",
+      "opciones": [
+        "Luis Gonzalez",
+        "Nationals Park",
+        "Willie Mays",
+        "Anthony Rizzo"
+      ],
+      "respuestaCorrecta": "Willie Mays"
+    },
+    {
+      "id": 75,
+      "division": "Oeste",
+      "equipo": "San Francisco Giants",
+      "pregunta": "¿Qué jugador de los Giants ganó el premio MVP de la Serie Mundial de 2014?",
+      "opciones": [
+        "Madison Bumgarner",
+        "Kris Bryant",
+        "Tony Gwynn",
+        "Curt Schilling"
+      ],
+      "respuestaCorrecta": "Madison Bumgarner"
+    }
+  ]
+}
