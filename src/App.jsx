@@ -28,6 +28,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/estadisticas" element={<Estadisticas />} />
+        <Route path="/equipo/:teamSlug" element={<Estadisticas />} />
         <Route path="/estadios" element={<Estadios />} />
         <Route path="/galeria" element={<Galeria />} />
         <Route path="/trivia" element={<Trivia />} />
