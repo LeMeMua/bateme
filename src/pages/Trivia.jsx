@@ -1,72 +1,241 @@
 import { Breadcrumb } from "../globals.jsx";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import triviaData from "../json/trivia_opciones.json";
 
-export default function Trivia() {
-  const [selectedTeam, setSelectedTeam] = useState("");
-  const [questionIndex, setQuestionIndex] = useState(0);
-  const [answers, setAnswers] = useState({});
+// Cada navegador guarda sus propios datos en localStorage.
+const STORAGE_KEY = "trivia_general_progreso_v1";
+const EMPTY_DATA = { selectedTeam: "", progress: {}, records: {} };
 
-  // Obtener los equipos disponibles
-  const teams = useMemo(() => {
-    return [
-      ...new Set(triviaData.preguntas.map((question) => question.equipo)),
-    ].sort();
-  }, []);
+function loadSavedData() {
+  if (typeof window === "undefined") return EMPTY_DATA;
 
-  // Filtrar preguntas por equipo
-  const questions = useMemo(() => {
-    return triviaData.preguntas.filter(
-      (question) => question.equipo === selectedTeam,
-    );
-  }, [selectedTeam]);
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    if (!raw) return EMPTY_DATA;
 
-  const currentQuestion = questions[questionIndex];
+    const saved = JSON.parse(raw);
+    if (!saved || typeof saved !== "object") return EMPTY_DATA;
 
-  // Contar respuestas correctas del equipo actual
-  const score = questions.filter(
-    (question) => answers[question.id] === question.respuestaCorrecta,
-  ).length;
+    return {
+      selectedTeam:
+        typeof saved.selectedTeam === "string" ? saved.selectedTeam : "",
+      progress:
+        saved.progress &&
+        typeof saved.progress === "object" &&
+        !Array.isArray(saved.progress)
+          ? saved.progress
+          : {},
+      records:
+        saved.records &&
+        typeof saved.records === "object" &&
+        !Array.isArray(saved.records)
+          ? saved.records
+          : {},
+    };
+  } catch (error) {
+    console.warn("No se pudo recuperar el progreso de la trivia:", error);
+    return EMPTY_DATA;
+  }
+}
 
-  const answeredCount = questions.filter(
+// Solo cuentan las respuestas de preguntas que existen en la versión actual del JSON.
+function getTeamProgress(teamQuestions, savedProgress) {
+  const answers =
+    savedProgress?.answers && typeof savedProgress.answers === "object"
+      ? savedProgress.answers
+      : {};
+
+  const answeredCount = teamQuestions.filter(
     (question) => answers[question.id] !== undefined,
   ).length;
 
+  const score = teamQuestions.filter(
+    (question) => answers[question.id] === question.respuestaCorrecta,
+  ).length;
+
+  return { answers, answeredCount, score };
+}
+
+export default function Trivia() {
+  const [savedData, setSavedData] = useState(loadSavedData);
+
+  // Guardar automáticamente cada respuesta y cambio de pregunta/equipo.
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(savedData));
+    } catch (error) {
+      console.warn("No se pudo guardar la trivia en este navegador:", error);
+    }
+  }, [savedData]);
+
+  const teams = useMemo(
+    () =>
+      [
+        ...new Set(triviaData.preguntas.map((question) => question.equipo)),
+      ].sort(),
+    [],
+  );
+
+  const selectedTeam = teams.includes(savedData.selectedTeam)
+    ? savedData.selectedTeam
+    : "";
+
+  const questions = useMemo(
+    () =>
+      triviaData.preguntas.filter(
+        (question) => question.equipo === selectedTeam,
+      ),
+    [selectedTeam],
+  );
+
+  const savedProgress = savedData.progress[selectedTeam];
+  const { answers, answeredCount, score } = getTeamProgress(
+    questions,
+    savedProgress,
+  );
+
+  // Si se modificó el JSON, evitamos índices fuera de rango.
+  const questionIndex = Math.min(
+    Math.max(
+      Number.isInteger(savedProgress?.questionIndex)
+        ? savedProgress.questionIndex
+        : 0,
+      0,
+    ),
+    Math.max(questions.length - 1, 0),
+  );
+
+  const currentQuestion = questions[questionIndex];
   const finished = questions.length > 0 && answeredCount === questions.length;
+  const record = savedData.records[selectedTeam] ?? null;
+
+  const teamSummaries = useMemo(() => {
+    return teams.map((team) => {
+      const teamQuestions = triviaData.preguntas.filter(
+        (question) => question.equipo === team,
+      );
+      const stats = getTeamProgress(teamQuestions, savedData.progress[team]);
+
+      return {
+        name: team,
+        total: teamQuestions.length,
+        answered: stats.answeredCount,
+        complete:
+          teamQuestions.length > 0 &&
+          stats.answeredCount === teamQuestions.length,
+        record: savedData.records[team] ?? null,
+      };
+    });
+  }, [teams, savedData.progress, savedData.records]);
+
+  const completedTeams = teamSummaries.filter((team) => team.complete).length;
 
   function selectTeam(team) {
-    setSelectedTeam(team);
-    setQuestionIndex(0);
-    setAnswers({});
+    setSavedData((previous) => ({ ...previous, selectedTeam: team }));
   }
 
   function selectAnswer(option) {
     if (!currentQuestion) return;
 
-    // Impedir responder dos veces
-    if (answers[currentQuestion.id] !== undefined) return;
+    setSavedData((previous) => {
+      const previousProgress = previous.progress[selectedTeam] ?? {};
+      const previousAnswers = previousProgress.answers ?? {};
 
-    setAnswers((previous) => ({
+      // Evitar que una pregunta se responda dos veces.
+      if (previousAnswers[currentQuestion.id] !== undefined) return previous;
+
+      const nextAnswers = {
+        ...previousAnswers,
+        [currentQuestion.id]: option,
+      };
+      const nextStats = getTeamProgress(questions, { answers: nextAnswers });
+      const justFinished = nextStats.answeredCount === questions.length;
+      const previousRecord = previous.records[selectedTeam];
+
+      // El récord se actualiza únicamente al terminar una trivia.
+      const improvedRecord =
+        justFinished &&
+        (!previousRecord || nextStats.score > previousRecord.score);
+
+      return {
+        ...previous,
+        progress: {
+          ...previous.progress,
+          [selectedTeam]: {
+            questionIndex,
+            answers: nextAnswers,
+          },
+        },
+        records: improvedRecord
+          ? {
+              ...previous.records,
+              [selectedTeam]: {
+                score: nextStats.score,
+                total: questions.length,
+              },
+            }
+          : previous.records,
+      };
+    });
+  }
+
+  function moveQuestion(index) {
+    if (!selectedTeam || index < 0 || index >= questions.length) return;
+
+    setSavedData((previous) => ({
       ...previous,
-      [currentQuestion.id]: option,
+      progress: {
+        ...previous.progress,
+        [selectedTeam]: {
+          ...previous.progress[selectedTeam],
+          questionIndex: index,
+          answers: previous.progress[selectedTeam]?.answers ?? {},
+        },
+      },
     }));
   }
 
-  function nextQuestion() {
-    if (questionIndex < questions.length - 1) {
-      setQuestionIndex((previous) => previous + 1);
+  function resetTeam(askConfirmation = false) {
+    if (!selectedTeam) return;
+
+    if (
+      askConfirmation &&
+      !window.confirm(
+        `¿Reiniciar la trivia de ${selectedTeam}? Se borrarán sus respuestas, pero conservarás el récord.`,
+      )
+    ) {
+      return;
     }
+
+    setSavedData((previous) => {
+      const nextProgress = { ...previous.progress };
+      delete nextProgress[selectedTeam];
+      return { ...previous, progress: nextProgress };
+    });
   }
 
-  function previousQuestion() {
-    if (questionIndex > 0) {
-      setQuestionIndex((previous) => previous - 1);
+  function resetAllTests() {
+    if (
+      !window.confirm(
+        "¿Quieres volver a empezar TODOS los tests? Se borrarán las respuestas y el avance de todos los equipos. Tus récords se conservarán.",
+      )
+    ) {
+      return;
     }
+
+    setSavedData((previous) => ({ ...previous, progress: {} }));
   }
 
-  function resetTrivia() {
-    setQuestionIndex(0);
-    setAnswers({});
+  function clearEverything() {
+    if (
+      !window.confirm(
+        "¿Eliminar TODO el progreso y TODOS los récords guardados en este navegador? Esta acción no se puede deshacer.",
+      )
+    ) {
+      return;
+    }
+
+    setSavedData({ selectedTeam: "", progress: {}, records: {} });
   }
 
   return (
@@ -75,17 +244,9 @@ export default function Trivia() {
 
       <main
         className="
-          flex
-          min-h-[calc(100vh-100px)]
-          flex-col
-          items-center
-          justify-center
-          gap-6
-          bg-linear-to-br
-          from-[#02112d]
-          to-[#08245b]
-          px-5
-          py-10
+          flex min-h-[calc(100vh-100px)] flex-col items-center
+          justify-center gap-6 bg-linear-to-br from-[#02112d]
+          to-[#08245b] px-5 py-10
         "
       >
         <div className="w-full max-w-237.5">
@@ -97,23 +258,20 @@ export default function Trivia() {
             id="team"
             value={selectedTeam}
             onChange={(event) => selectTeam(event.target.value)}
-            className="
-              w-full
-              rounded-xl
-              bg-white
-              p-3
-              text-black
-              outline-none
-            "
+            className="w-full rounded-xl bg-white p-3 text-black outline-none"
           >
             <option value="">Selecciona un equipo</option>
-
             {teams.map((team) => (
               <option key={team} value={team}>
                 {team}
               </option>
             ))}
           </select>
+
+          <p className="mt-2 text-sm text-white/70">
+            Tu avance y tus récords se guardan automáticamente en este
+            navegador.
+          </p>
         </div>
 
         {currentQuestion ? (
@@ -122,17 +280,19 @@ export default function Trivia() {
             currentQuestion={questionIndex + 1}
             totalQuestions={questions.length}
             score={score}
+            record={record}
+            answeredCount={answeredCount}
             selectedOption={answers[currentQuestion.id] ?? null}
             onSelect={selectAnswer}
-            onNext={nextQuestion}
-            onPrevious={previousQuestion}
-            onReset={resetTrivia}
+            onNext={() => moveQuestion(questionIndex + 1)}
+            onPrevious={() => moveQuestion(questionIndex - 1)}
+            onReset={() => resetTeam(false)}
             hasPrevious={questionIndex > 0}
             hasNext={questionIndex < questions.length - 1}
             finished={finished}
           />
         ) : (
-          <div className="rounded-2xl bg-white p-10 text-center">
+          <div className="w-full max-w-237.5 rounded-2xl bg-white p-10 text-center">
             <h2 className="text-2xl font-bold text-black">
               Bienvenido a la trivia
             </h2>
@@ -141,6 +301,92 @@ export default function Trivia() {
             </p>
           </div>
         )}
+
+        {/* Acciones para volver a hacer una o todas las trivias */}
+        <div className="flex w-full max-w-237.5 flex-wrap gap-3">
+          {selectedTeam && (
+            <button
+              type="button"
+              onClick={() => resetTeam(true)}
+              className="rounded-full border border-white/40 px-5 py-2.5 font-bold text-white transition hover:bg-white/10"
+            >
+              Reiniciar este equipo
+            </button>
+          )}
+
+          <button
+            type="button"
+            onClick={resetAllTests}
+            className="rounded-full bg-[#ff2a4b] px-5 py-2.5 font-bold text-white transition hover:bg-[#dc1737]"
+          >
+            Reiniciar todos los tests
+          </button>
+
+          <button
+            type="button"
+            onClick={clearEverything}
+            className="rounded-full border border-red-300/50 px-5 py-2.5 font-bold text-red-200 transition hover:bg-red-500/20"
+          >
+            Borrar progreso y récords
+          </button>
+        </div>
+
+        {/* Resumen guardado por equipo */}
+        <section className="w-full max-w-237.5 rounded-2xl border border-white/10 bg-white/5 p-5 text-white sm:p-7">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
+            <h2 className="text-xl font-black uppercase">Mi progreso</h2>
+            <span className="font-bold text-[#ff6b83]">
+              Tests completados: {completedTeams}/{teams.length}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {teamSummaries.map((team) => (
+              <button
+                key={team.name}
+                type="button"
+                onClick={() => selectTeam(team.name)}
+                className={`rounded-xl border p-4 text-left transition hover:bg-white/10 ${
+                  selectedTeam === team.name
+                    ? "border-[#ff2a4b] bg-white/10"
+                    : "border-white/15"
+                }`}
+              >
+                <div className="mb-2 flex items-center justify-between gap-3">
+                  <span className="font-bold">{team.name}</span>
+                  <span className="text-xs text-white/70">
+                    {team.complete
+                      ? "Completado"
+                      : `${team.answered}/${team.total}`}
+                  </span>
+                </div>
+
+                <div
+                  className="h-2 overflow-hidden rounded-full bg-white/15"
+                  role="progressbar"
+                  aria-label={`Progreso de ${team.name}`}
+                  aria-valuemin={0}
+                  aria-valuemax={team.total}
+                  aria-valuenow={team.answered}
+                >
+                  <div
+                    className="h-full rounded-full bg-[#ff2a4b]"
+                    style={{
+                      width: `${team.total ? (team.answered / team.total) * 100 : 0}%`,
+                    }}
+                  />
+                </div>
+
+                <p className="mt-2 text-sm text-white/75">
+                  Récord:{" "}
+                  {team.record
+                    ? `${team.record.score}/${team.record.total}`
+                    : "Sin récord"}
+                </p>
+              </button>
+            ))}
+          </div>
+        </section>
       </main>
     </>
   );
@@ -153,6 +399,8 @@ export function TriviaCard({
   currentQuestion,
   totalQuestions,
   score,
+  record,
+  answeredCount,
   selectedOption,
   onSelect,
   onNext,
@@ -192,6 +440,15 @@ export function TriviaCard({
 
           <span className="font-bold text-[#ff2a4b]">
             Puntuación: {score}/{totalQuestions}
+          </span>
+        </div>
+
+        <div className="mb-5 flex flex-wrap items-center justify-center gap-3 text-sm font-bold">
+          <span className="rounded-full bg-gray-100 px-4 py-2 text-gray-800">
+            Avance: {answeredCount}/{totalQuestions}
+          </span>
+          <span className="rounded-full bg-amber-100 px-4 py-2 text-amber-800">
+            Récord: {record ? `${record.score}/${record.total}` : "Sin récord"}
           </span>
         </div>
 
