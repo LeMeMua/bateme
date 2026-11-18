@@ -60,12 +60,14 @@ export default function Estadios() {
           to-[#08245b]
 
           px-4
-          py-10
-          md:px-15
+          py-8
+          sm:px-6
+          sm:py-10
+          lg:px-15
         "
       >
         {stadiums.map((stadium, index) => (
-          <div key={stadium.id}>
+          <div key={stadium.id} className="mx-auto w-full max-w-350 min-w-0">
             <StadiumCard stadium={stadium} />
 
             {index < stadiums.length - 1 && <StadiumSeparator />}
@@ -107,7 +109,9 @@ function StadiumCard({ stadium }) {
       className="
         flex
         flex-col
-        gap-10
+        gap-5
+        sm:gap-7
+        lg:gap-10
 
         rounded-2xl
         border
@@ -118,10 +122,10 @@ function StadiumCard({ stadium }) {
 
         shadow-xl
 
-        md:flex-row
-        md:items-center
-        md:justify-between
-        md:p-7.5
+        lg:flex-row
+        lg:items-center
+        lg:justify-between
+        sm:p-7.5
       "
     >
       <StadiumInfo stadium={stadium} />
@@ -140,6 +144,7 @@ function StadiumInfo({ stadium }) {
     <div
       className="
         flex
+        min-w-0
         flex-1
         flex-col
         gap-5
@@ -151,7 +156,9 @@ function StadiumInfo({ stadium }) {
           border-(--color-redlight)
           pl-3.75
 
-          text-[32px]
+          break-words
+          text-2xl
+          sm:text-[32px]
           font-black
           italic
           uppercase
@@ -189,7 +196,9 @@ function StadiumData({ label, value }) {
   return (
     <li
       className="
-        text-lg
+        break-words
+        text-base
+        sm:text-lg
         font-semibold
         tracking-[0.5px]
         text-[#e0e6ed]
@@ -358,9 +367,12 @@ function StadiumModelViewer({ model, name }) {
       className="
         relative
 
-        h-70
+        h-60
         w-full
+        min-w-0
         flex-1
+        sm:h-70
+        lg:h-80
 
         overflow-hidden
 
@@ -370,7 +382,7 @@ function StadiumModelViewer({ model, name }) {
 
         bg-[#1a2b4c]
 
-        md:min-w-75
+        lg:min-w-75
       "
     >
       <ModelErrorBoundary key={model}>
@@ -456,7 +468,9 @@ function StadiumModelViewer({ model, name }) {
 
           bg-black/60
 
-          px-4
+          w-[calc(100%-1.5rem)]
+          max-w-max
+          px-3
           py-2
 
           text-center

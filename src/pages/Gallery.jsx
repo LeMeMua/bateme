@@ -126,12 +126,13 @@ export default function Galeria() {
           to-[#08245b]
 
           px-4
-          py-10
-
-          md:px-15
+          py-8
+          sm:px-6
+          sm:py-10
+          lg:px-15
         "
       >
-        <div className="mx-auto max-w-300">
+        <div className="mx-auto w-full max-w-300 min-w-0">
           {/* ============================ */}
           {/* REPRODUCTOR PRINCIPAL */}
           {/* ============================ */}
@@ -139,7 +140,9 @@ export default function Galeria() {
           <section
             ref={playerRef}
             className="
-              mb-12
+              mb-10
+              min-w-0
+              sm:mb-12
 
               overflow-hidden
               rounded-2xl
@@ -174,7 +177,8 @@ export default function Galeria() {
 
                   pl-4
 
-                  text-2xl
+                  text-xl
+                  sm:text-2xl
                   font-black
                   italic
                   uppercase
@@ -198,8 +202,10 @@ export default function Galeria() {
 
                   bg-red-600
 
+                  w-full
                   px-5
                   py-2.5
+                  sm:w-auto
 
                   text-sm
                   font-bold
@@ -246,9 +252,12 @@ export default function Galeria() {
 
               <div
                 className="
-                  flex
-                  flex-wrap
-                  gap-3
+                  grid
+                  grid-cols-2
+                  gap-2
+                  sm:flex
+                  sm:flex-wrap
+                  sm:gap-3
                 "
               >
                 {filters.map((option) => (
@@ -262,8 +271,10 @@ export default function Galeria() {
                       rounded-lg
                       border
 
-                      px-5
+                      min-w-0
+                      px-3
                       py-2.5
+                      sm:px-5
 
                       text-sm
                       font-bold
@@ -305,7 +316,8 @@ export default function Galeria() {
 
               pl-4
 
-              text-2xl
+              text-xl
+              sm:text-2xl
               font-black
               italic
               uppercase
@@ -502,6 +514,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
     <div
       ref={fullscreenRef}
       className="
+        min-w-0
         overflow-hidden
         rounded-xl
 
@@ -614,16 +627,20 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
         <div
           className="
             flex
+            min-w-0
             items-center
             justify-between
-            gap-3
+            gap-2
+            sm:gap-3
           "
         >
           <div
             className="
               flex
+              min-w-0
               items-center
-              gap-4
+              gap-2
+              sm:gap-4
             "
           >
             {/* PLAY / PAUSA */}
@@ -666,6 +683,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
 
             <span
               className="
+                whitespace-nowrap
                 text-xs
                 font-semibold
                 text-white/70
@@ -735,8 +753,9 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
         className="
           relative
           block
-          h-62.5
+          h-52
           w-full
+          sm:h-62.5
 
           cursor-pointer
           overflow-hidden

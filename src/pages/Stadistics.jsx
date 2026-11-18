@@ -120,22 +120,29 @@ export default function Estadisticas() {
           bg-linear-to-br
           from-[#02112d]
           to-[#08245b]
-          px-6
-          py-10
+          px-4
+          py-8
           text-white
-          md:px-15
+          sm:px-6
+          sm:py-10
+          lg:px-15
         "
       >
-        <div className="relative z-10">
+        <div className="relative z-10 mx-auto w-full max-w-350 min-w-0">
           <h1
             className="
-              mb-10
-              text-[38px]
+              mb-7
+              break-words
+              text-2xl
+              sm:text-3xl
+              md:mb-10
+              lg:text-[38px]
               font-black
               italic
               tracking-[1px]
               text-white
-              [-webkit-text-stroke:2px_#ff2a4b]
+              [-webkit-text-stroke:1px_#ff2a4b]
+              sm:[-webkit-text-stroke:2px_#ff2a4b]
             "
           >
             JUGADORES DE {teamName.toUpperCase()}
@@ -155,7 +162,7 @@ export default function Estadisticas() {
                 Total de jugadores: {players.length}
               </p>
 
-              <div className="flex flex-col items-start gap-12.5 lg:flex-row">
+              <div className="flex min-w-0 flex-col items-stretch gap-7 lg:flex-row lg:items-start lg:gap-12.5">
                 <PlayerMenu
                   players={players}
                   selectedPlayer={selectedPlayer}
@@ -198,13 +205,15 @@ function BackgroundLogo() {
 
 export function PlayerMenu({ players, selectedPlayer, onSelect }) {
   return (
-    <aside className="max-h-150 w-full shrink-0 overflow-y-auto lg:w-64">
+    <aside className="w-full min-w-0 shrink-0 overflow-x-auto pb-2 lg:max-h-150 lg:w-64 lg:overflow-y-auto lg:overflow-x-hidden">
       <ul
         className="
           flex
           list-none
-          flex-col
-          gap-3.75
+          flex-row
+          gap-3
+          lg:flex-col
+          lg:gap-3.75
         "
       >
         {players.map((player) => (
@@ -222,7 +231,7 @@ export function PlayerMenu({ players, selectedPlayer, onSelect }) {
 
 function PlayerButton({ player, selected, onSelect }) {
   return (
-    <li>
+    <li className="shrink-0">
       <button
         type="button"
         onClick={() => onSelect(player.id)}
@@ -230,7 +239,10 @@ function PlayerButton({ player, selected, onSelect }) {
           cursor-pointer
           text-left
 
-          text-2xl
+          whitespace-nowrap
+          text-base
+          sm:text-lg
+          lg:text-2xl
           font-black
           italic
 
@@ -316,7 +328,7 @@ export function PlayerContent({ player }) {
           <p className="text-gray-400">No hay estadísticas registradas.</p>
         ) : (
           <div className="overflow-x-auto rounded-xl border border-white/10">
-            <table className="w-full text-left text-sm">
+            <table className="w-full min-w-max text-left text-xs sm:text-sm">
               <thead className="bg-[#ff2a4b] text-white">
                 <tr>
                   {columns.map((column) => (
@@ -345,12 +357,12 @@ export function PlayerContent({ player }) {
 
   return (
     <section className="w-full min-w-0 flex-1">
-      <div className="mb-8 rounded-xl border border-white/10 bg-white/5 p-6">
-        <h2 className="mb-5 text-3xl font-black italic text-[#ff2a4b]">
+      <div className="mb-8 rounded-xl border border-white/10 bg-white/5 p-4 sm:p-6">
+        <h2 className="mb-5 break-words text-2xl font-black italic text-[#ff2a4b] sm:text-3xl">
           {player.name}
         </h2>
 
-        <div className="grid grid-cols-1 gap-4 text-lg sm:grid-cols-3">
+        <div className="grid grid-cols-1 gap-4 text-base sm:grid-cols-2 sm:text-lg xl:grid-cols-3">
           <p>
             <span className="font-bold">Número:</span> {player.number ?? "—"}
           </p>

@@ -16,8 +16,10 @@ export default function Home() {
           justify-center
           overflow-hidden
           bg-(--color-hero)
-          px-10
-          py-16
+          px-4
+          py-12
+          sm:px-8
+          sm:py-16
         "
       >
         <Background />
@@ -37,9 +39,11 @@ export default function Home() {
 
           <h1
             className="
-              mt-10
+              mt-7
               text-center
-              text-[28px]
+              text-xl
+              sm:mt-10
+              sm:text-[28px]
               font-bold
               italic
               tracking-wide
@@ -129,12 +133,11 @@ export function DivisionNav() {
       onMouseEnter={() => setIsMoving(false)}
       onMouseLeave={() => setIsMoving(true)}
       className="
-        bg-(--color-cream)
-        py-5
         w-full
-        overflow-x-auto
-        snap-x
-        snap-mandatory
+        overflow-hidden
+        bg-(--color-cream)
+        py-4
+        sm:py-5
       "
     >
       <div className="flex w-full">
@@ -144,7 +147,10 @@ export function DivisionNav() {
             className="
               w-full
               shrink-0
-              px-10
+              min-w-0
+              px-3
+              sm:px-6
+              lg:px-10
               flex
               justify-center
               items-center
@@ -161,11 +167,12 @@ export function DivisionNav() {
 
 function Division({ division }) {
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex w-full max-w-5xl flex-col items-center justify-center gap-3 sm:gap-5 lg:flex-row lg:gap-6">
       <h2
         className="
           whitespace-nowrap
-          text-lg
+          text-base
+          sm:text-lg
           font-black
           italic
           tracking-wide
@@ -177,7 +184,7 @@ function Division({ division }) {
         {division.name}
       </h2>
 
-      <div className="flex gap-4">
+      <div className="flex max-w-full flex-wrap items-center justify-center gap-2 sm:gap-3 lg:gap-4">
         {division.teams.map((team) => (
           <TeamButton key={team.slug} team={team} />
         ))}
@@ -192,8 +199,12 @@ function TeamButton({ team }) {
       to={`/equipo/${team.slug}`}
       className="
         flex
-        h-15
-        w-15
+        h-11
+        w-11
+        sm:h-13
+        sm:w-13
+        lg:h-15
+        lg:w-15
         shrink-0
         items-center
         justify-center
@@ -203,7 +214,8 @@ function TeamButton({ team }) {
         border-gray-200
 
         bg-white
-        text-sm
+        text-xs
+        sm:text-sm
         font-bold
         text-(--color-bglight)
 
@@ -252,7 +264,9 @@ function HomeImages() {
         w-full
         items-center
         justify-center
-        gap-5
+        gap-2
+        sm:gap-4
+        lg:gap-5
       "
       aria-label="Imágenes destacadas"
     >
@@ -271,10 +285,16 @@ function HomeImage({ main = false }) {
       className={`
         bg-cover
         bg-center
+        min-w-0
+        shrink
         shadow-2xl
         transition
 
-        ${main ? "h-87.5 w-155" : "h-75 w-100 opacity-70"}
+        ${
+          main
+            ? "h-35 w-[54%] max-w-155 sm:h-60 lg:h-87.5 lg:w-155"
+            : "h-27 w-[22%] max-w-100 opacity-70 sm:h-48 lg:h-75 lg:w-100"
+        }
       `}
       style={{
         backgroundImage: "url('/imagen.jpg')",

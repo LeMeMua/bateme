@@ -479,14 +479,14 @@ export default function ARCamera() {
   }
 
   return (
-    <main className="relative h-[100dvh] w-full overflow-hidden bg-black text-white">
+    <main className="relative h-[calc(100dvh-76px)] min-h-[360px] w-full min-w-0 overflow-hidden bg-black text-white">
       <div
         ref={containerRef}
         className="absolute inset-0 isolate overflow-hidden"
       />
 
-      <div className="absolute left-3 right-3 top-3 z-50 mx-auto max-w-xl rounded-xl border border-white/20 bg-[#02112d]/90 p-4 shadow-xl backdrop-blur-md">
-        <h1 className="mb-3 text-lg font-black uppercase">
+      <div className="absolute left-2 right-2 top-2 z-40 mx-auto max-h-[min(45dvh,280px)] max-w-xl overflow-y-auto overscroll-contain rounded-xl border border-white/20 bg-[#02112d]/90 p-3 shadow-xl backdrop-blur-md sm:left-3 sm:right-3 sm:top-3 sm:p-4">
+        <h1 className="mb-2 text-base font-black uppercase sm:mb-3 sm:text-lg">
           Cámara de realidad aumentada
         </h1>
         {collection && (
@@ -527,13 +527,13 @@ export default function ARCamera() {
         )}
       </div>
 
-      <div className="absolute bottom-7 left-1/2 z-50 w-max max-w-[90%] -translate-x-1/2">
+      <div className="absolute bottom-[max(1rem,env(safe-area-inset-bottom))] left-1/2 z-50 w-[calc(100%-2rem)] max-w-xs -translate-x-1/2 sm:bottom-7 sm:w-max sm:max-w-[90%]">
         {!running ? (
           <button
             type="button"
             onClick={startAR}
             disabled={busy || !collection}
-            className="rounded-xl bg-green-600 px-7 py-3 font-bold text-white shadow-lg transition hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-50"
+            className="w-full rounded-xl bg-green-600 px-7 py-3 font-bold text-white shadow-lg transition hover:bg-green-500 disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
           >
             {busy
               ? phase === "stopping"
@@ -545,7 +545,7 @@ export default function ARCamera() {
           <button
             type="button"
             onClick={stopAR}
-            className="rounded-xl bg-red-600 px-7 py-3 font-bold text-white shadow-lg transition hover:bg-red-500"
+            className="w-full rounded-xl bg-red-600 px-7 py-3 font-bold text-white shadow-lg transition hover:bg-red-500 sm:w-auto"
           >
             Detener AR
           </button>

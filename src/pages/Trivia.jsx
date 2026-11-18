@@ -246,7 +246,7 @@ export default function Trivia() {
         className="
           flex min-h-[calc(100vh-100px)] flex-col items-center
           justify-center gap-6 bg-linear-to-br from-[#02112d]
-          to-[#08245b] px-5 py-10
+          to-[#08245b] px-4 py-8 sm:px-5 sm:py-10
         "
       >
         <div className="w-full max-w-237.5">
@@ -292,7 +292,7 @@ export default function Trivia() {
             finished={finished}
           />
         ) : (
-          <div className="w-full max-w-237.5 rounded-2xl bg-white p-10 text-center">
+          <div className="w-full max-w-237.5 rounded-2xl bg-white p-6 text-center sm:p-10">
             <h2 className="text-2xl font-bold text-black">
               Bienvenido a la trivia
             </h2>
@@ -303,12 +303,12 @@ export default function Trivia() {
         )}
 
         {/* Acciones para volver a hacer una o todas las trivias */}
-        <div className="flex w-full max-w-237.5 flex-wrap gap-3">
+        <div className="flex w-full max-w-237.5 flex-col gap-3 sm:flex-row sm:flex-wrap">
           {selectedTeam && (
             <button
               type="button"
               onClick={() => resetTeam(true)}
-              className="rounded-full border border-white/40 px-5 py-2.5 font-bold text-white transition hover:bg-white/10"
+              className="w-full rounded-full border border-white/40 px-5 py-2.5 font-bold text-white transition hover:bg-white/10 sm:w-auto"
             >
               Reiniciar este equipo
             </button>
@@ -317,7 +317,7 @@ export default function Trivia() {
           <button
             type="button"
             onClick={resetAllTests}
-            className="rounded-full bg-[#ff2a4b] px-5 py-2.5 font-bold text-white transition hover:bg-[#dc1737]"
+            className="w-full rounded-full bg-[#ff2a4b] px-5 py-2.5 font-bold text-white transition hover:bg-[#dc1737] sm:w-auto"
           >
             Reiniciar todos los tests
           </button>
@@ -325,7 +325,7 @@ export default function Trivia() {
           <button
             type="button"
             onClick={clearEverything}
-            className="rounded-full border border-red-300/50 px-5 py-2.5 font-bold text-red-200 transition hover:bg-red-500/20"
+            className="w-full rounded-full border border-red-300/50 px-5 py-2.5 font-bold text-red-200 transition hover:bg-red-500/20 sm:w-auto"
           >
             Borrar progreso y récords
           </button>
@@ -423,17 +423,19 @@ export function TriviaCard({
         overflow-hidden
         rounded-[28px]
         bg-white
-        px-5
-        py-10
+        px-4
+        py-8
         shadow-2xl
-        sm:px-12.5
-        sm:py-15
+        sm:px-8
+        sm:py-12
+        lg:px-12.5
+        lg:py-15
       "
     >
       <DecorativeCircles />
 
       <div className="relative z-10 text-center">
-        <div className="mb-6 flex flex-wrap justify-between gap-3">
+        <div className="mb-6 flex flex-wrap justify-center gap-3 text-sm sm:justify-between sm:text-base">
           <span className="font-bold text-black">
             Pregunta {currentQuestion}/{totalQuestions}
           </span>
@@ -459,7 +461,9 @@ export function TriviaCard({
             mx-auto
             mb-10
             max-w-200
-            text-[22px]
+            break-words
+            text-lg
+            sm:text-[22px]
             font-bold
             leading-[1.4]
             text-black
@@ -474,8 +478,9 @@ export function TriviaCard({
             flex-wrap
             items-center
             justify-center
-            gap-5
-            sm:gap-10
+            gap-3
+            sm:gap-5
+            lg:gap-10
           "
         >
           {question.opciones.map((option, index) => (
@@ -517,14 +522,16 @@ export function TriviaCard({
           </div>
         )}
 
-        <div className="mt-10 flex flex-wrap justify-center gap-4">
+        <div className="mt-10 flex flex-col justify-center gap-3 sm:flex-row sm:flex-wrap sm:gap-4">
           <button
             type="button"
             onClick={onPrevious}
             disabled={!hasPrevious}
             className="
+              w-full
               rounded-full
               bg-gray-200
+              sm:w-auto
               px-6
               py-3
               font-bold
@@ -544,8 +551,10 @@ export function TriviaCard({
               onClick={onNext}
               disabled={!answered}
               className="
+                w-full
                 rounded-full
                 bg-[#ff2a4b]
+                sm:w-auto
                 px-6
                 py-3
                 font-bold
@@ -623,10 +632,16 @@ export function TriviaOption({
       onClick={onSelect}
       disabled={answered}
       className={`
+        w-full
+        max-w-full
+        break-words
         rounded-full
-        px-6
+        px-4
         py-2.5
-        text-[22px]
+        text-base
+        sm:w-auto
+        sm:px-6
+        sm:text-[22px]
         font-bold
         transition-all
         duration-200
@@ -650,8 +665,10 @@ function DecorativeCircles() {
           absolute
           -right-20
           -top-20
-          h-55
-          w-55
+          h-35
+          w-35
+          sm:h-55
+          sm:w-55
           rounded-full
           border-18
           border-[#ff2a4b]
@@ -664,8 +681,10 @@ function DecorativeCircles() {
           absolute
           -bottom-22.5
           -left-20
-          h-55
-          w-55
+          h-35
+          w-35
+          sm:h-55
+          sm:w-55
           rounded-full
           border-18
           border-[#ff2a4b]

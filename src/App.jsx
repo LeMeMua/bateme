@@ -7,7 +7,6 @@ import Galeria from "./pages/Gallery.jsx";
 import Trivia from "./pages/Trivia.jsx";
 import Estadisticas from "./pages/Stadistics.jsx";
 import MindAR from "./pages/ArCamera.jsx";
-import { Model } from "./assets/Models/batter.jsx";
 
 function PlaceholderPage({ title }) {
   return (
