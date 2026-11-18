@@ -1,0 +1,112 @@
+{
+  "collections": [
+    {
+      "id": "todos",
+      "name": "Todas las imágenes AR",
+      "mind": "/ar/todos.mind",
+      "maxTrack": 1,
+      "targets": [
+        {
+          "index": 0,
+          "name": "Mets - Texto",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 1,
+          "name": "Mets - NY naranja y azul",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 2,
+          "name": "Mets - NY fondo azul",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 3,
+          "name": "Mets - NY naranja",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 4,
+          "name": "Dodgers - LA azul",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 5,
+          "name": "Dodgers - LA fondo azul",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 6,
+          "name": "Dodgers - LA contorno",
+          "model": "/glb/baile.glb",
+          "size": 0.75,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": false,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 7,
+          "name": "Pirates - P circular",
+          "model": "/glb/insignia_anim.glb",
+          "size": 0.7,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": true,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 8,
+          "name": "Pirates - P contorno",
+          "model": "/glb/insignia_anim.glb",
+          "size": 0.7,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": true,
+          "rotateSpeed": 0
+        },
+        {
+          "index": 9,
+          "name": "Pirates - P amarilla",
+          "model": "/glb/insignia_anim.glb",
+          "size": 0.7,
+          "position": [0, 0, 0.1],
+          "rotation": [0, 0, 0],
+          "animate": true,
+          "rotateSpeed": 0
+        }
+      ]
+    }
+  ]
+}

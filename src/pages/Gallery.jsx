@@ -11,7 +11,10 @@ const galleryItems = Array.from({ length: 9 }, (_, index) => ({
   name: `Video ${index + 1}`,
 }));
 
-// Rutas de los archivos MP4
+// ==========================================
+// RUTAS DE LOS VIDEOS
+// ==========================================
+
 function getVideoUrl(id, withParticles) {
   const folder = withParticles ? "Con Partículas" : "Sin Partículas";
 
@@ -19,7 +22,7 @@ function getVideoUrl(id, withParticles) {
 }
 
 // ==========================================
-// TIPOS DE FILTROS
+// FILTROS DISPONIBLES
 // ==========================================
 
 const filters = [
@@ -28,8 +31,8 @@ const filters = [
     label: "Original",
   },
   {
-    id: "pixelado",
-    label: "Pixelado",
+    id: "saturacion",
+    label: "Saturación",
   },
   {
     id: "blur",
@@ -62,7 +65,9 @@ function formatTime(seconds) {
 
 export default function Galeria() {
   const [selectedId, setSelectedId] = useState(1);
+
   const [withParticles, setWithParticles] = useState(true);
+
   const [filter, setFilter] = useState("normal");
 
   const playerRef = useRef(null);
@@ -71,9 +76,18 @@ export default function Galeria() {
 
   const videoUrl = getVideoUrl(selectedId, withParticles);
 
-  // Seleccionar uno de los 9 videos
+  // ========================================
+  // SELECCIONAR UN VIDEO
+  // ========================================
+
   function selectVideo(id) {
-    if (id === selectedId) return;
+    if (id === selectedId) {
+      playerRef.current?.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      return;
+    }
 
     resumeRef.current = null;
     setSelectedId(id);
@@ -84,7 +98,10 @@ export default function Galeria() {
     });
   }
 
-  // Cambiar entre las dos versiones
+  // ========================================
+  // ACTIVAR / DESACTIVAR PARTÍCULAS
+  // ========================================
+
   function toggleParticles() {
     const video = videoRef.current;
 
@@ -103,31 +120,43 @@ export default function Galeria() {
       <main
         className="
           min-h-[calc(100vh-100px)]
+
           bg-linear-to-br
           from-[#02112d]
           to-[#08245b]
+
           px-4
           py-10
+
           md:px-15
         "
       >
         <div className="mx-auto max-w-300">
+          {/* ============================ */}
           {/* REPRODUCTOR PRINCIPAL */}
+          {/* ============================ */}
 
           <section
             ref={playerRef}
             className="
               mb-12
+
               overflow-hidden
               rounded-2xl
+
               border
               border-white/10
+
               bg-white/5
+
               p-4
               shadow-xl
+
               md:p-7
             "
           >
+            {/* ENCABEZADO */}
+
             <div
               className="
                 mb-5
@@ -142,7 +171,9 @@ export default function Galeria() {
                 className="
                   border-l-[5px]
                   border-(--color-redlight)
+
                   pl-4
+
                   text-2xl
                   font-black
                   italic
@@ -160,25 +191,31 @@ export default function Galeria() {
                 onClick={toggleParticles}
                 className="
                   cursor-pointer
+
                   rounded-lg
                   border
                   border-red-500/50
+
                   bg-red-600
+
                   px-5
                   py-2.5
+
                   text-sm
                   font-bold
                   text-white
+
                   transition-all
                   hover:bg-red-500
                 "
               >
                 {withParticles ? "✦ Con partículas" : "◯ Sin partículas"}
+
                 <span className="ml-2">⇄</span>
               </button>
             </div>
 
-            {/* VIDEO INTERACTIVO */}
+            {/* REPRODUCTOR */}
 
             <VideoPlayer
               videoRef={videoRef}
@@ -187,16 +224,20 @@ export default function Galeria() {
               filter={filter}
             />
 
-            {/* SELECTOR DE FILTROS */}
+            {/* ============================ */}
+            {/* FILTROS DEL VIDEO */}
+            {/* ============================ */}
 
             <div className="mt-6">
               <h3
                 className="
                   mb-3
+
                   text-sm
                   font-bold
                   uppercase
                   tracking-widest
+
                   text-white/70
                 "
               >
@@ -220,11 +261,16 @@ export default function Galeria() {
                       cursor-pointer
                       rounded-lg
                       border
+
                       px-5
                       py-2.5
+
                       text-sm
                       font-bold
+
                       transition-all
+                      duration-300
+
                       ${
                         filter === option.id
                           ? "border-red-500 bg-red-600 text-white"
@@ -238,38 +284,44 @@ export default function Galeria() {
               </div>
             </div>
 
+            {/* INFORMACIÓN */}
+
             <p className="mt-4 text-xs text-white/50">
-              Cambia los filtros mientras se reproduce el video. Usa el botón
-              superior para alternar entre la versión con partículas y la
-              versión sin partículas.
+              Aplica filtros mientras reproduces el video. También puedes
+              cambiar entre las versiones con y sin partículas.
             </p>
           </section>
 
-          {/* TÍTULO DE LA GALERÍA */}
+          {/* ============================ */}
+          {/* GALERÍA DE VIDEOS */}
+          {/* ============================ */}
 
           <h2
             className="
               mb-7
+
               border-l-[5px]
               border-(--color-redlight)
+
               pl-4
+
               text-2xl
               font-black
               italic
               uppercase
+
               text-white
             "
           >
             GALERÍA DE VIDEOS
           </h2>
 
-          {/* CUADRÍCULA DE LOS 9 VIDEOS */}
-
           <section
             className="
               grid
               grid-cols-1
               gap-7.5
+
               md:grid-cols-2
               lg:grid-cols-3
             "
@@ -295,7 +347,6 @@ export default function Galeria() {
 // ==========================================
 
 function VideoPlayer({ videoRef, resumeRef, src, filter }) {
-  const canvasRef = useRef(null);
   const fullscreenRef = useRef(null);
 
   const [playing, setPlaying] = useState(false);
@@ -304,144 +355,51 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
   const [duration, setDuration] = useState(0);
   const [error, setError] = useState("");
 
-  // Recargar video al cambiar su ruta
+  // ========================================
+  // REINICIAR ESTADOS CUANDO CAMBIA VIDEO
+  // ========================================
+
   useEffect(() => {
-    const video = videoRef.current;
-
-    if (!video) return;
-
-    const resume = resumeRef.current;
-    resumeRef.current = null;
-
     setPlaying(false);
     setCurrentTime(0);
     setDuration(0);
     setError("");
-
-    const restorePlayback = () => {
-      setDuration(video.duration || 0);
-
-      if (resume) {
-        const maxTime = Number.isFinite(video.duration)
-          ? Math.max(0, video.duration - 0.05)
-          : resume.time;
-
-        video.currentTime = Math.min(resume.time, maxTime);
-
-        if (resume.playing) {
-          video.play().catch(() => {
-            // Algunos navegadores bloquean
-            // la reproducción automática.
-          });
-        }
-      }
-    };
-
-    video.addEventListener("loadedmetadata", restorePlayback);
-
-    video.load();
-
-    return () => {
-      video.removeEventListener("loadedmetadata", restorePlayback);
-    };
-  }, [src, videoRef, resumeRef]);
+  }, [src]);
 
   // ========================================
-  // FILTRO PIXELADO CON CANVAS
+  // RESTAURAR TIEMPO AL CAMBIAR PARTÍCULAS
   // ========================================
 
-  useEffect(() => {
-    if (filter !== "pixelado") return;
+  function handleLoadedMetadata(event) {
+    const video = event.currentTarget;
 
-    const video = videoRef.current;
-    const canvas = canvasRef.current;
+    const videoDuration = Number.isFinite(video.duration) ? video.duration : 0;
 
-    if (!video || !canvas) return;
+    setDuration(videoDuration);
 
-    const ctx = canvas.getContext("2d");
+    const resume = resumeRef.current;
 
-    if (!ctx) return;
+    if (!resume) return;
 
-    const smallCanvas = document.createElement("canvas");
-    const smallCtx = smallCanvas.getContext("2d");
+    resumeRef.current = null;
 
-    if (!smallCtx) return;
+    const maxTime = Math.max(0, videoDuration - 0.05);
 
-    let animationId;
+    const resumeTime = Math.min(resume.time, maxTime);
 
-    function drawPixelatedFrame() {
-      const cssWidth = video.clientWidth;
-      const cssHeight = video.clientHeight;
+    video.currentTime = resumeTime;
 
-      if (cssWidth > 0 && cssHeight > 0) {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    setCurrentTime(resumeTime);
 
-        const width = Math.round(cssWidth * dpr);
-        const height = Math.round(cssHeight * dpr);
-
-        if (canvas.width !== width || canvas.height !== height) {
-          canvas.width = width;
-          canvas.height = height;
-        }
-
-        // Cuanto mayor sea este número,
-        // más grandes serán los píxeles.
-        const pixelSize = 14;
-
-        const smallWidth = Math.max(1, Math.round(cssWidth / pixelSize));
-
-        const smallHeight = Math.max(1, Math.round(cssHeight / pixelSize));
-
-        if (
-          smallCanvas.width !== smallWidth ||
-          smallCanvas.height !== smallHeight
-        ) {
-          smallCanvas.width = smallWidth;
-          smallCanvas.height = smallHeight;
-        }
-
-        smallCtx.fillStyle = "#000000";
-        smallCtx.fillRect(0, 0, smallWidth, smallHeight);
-
-        if (
-          video.readyState >= 2 &&
-          video.videoWidth > 0 &&
-          video.videoHeight > 0
-        ) {
-          // Mantener las proporciones originales
-          const ratio = Math.min(
-            smallWidth / video.videoWidth,
-            smallHeight / video.videoHeight,
-          );
-
-          const drawWidth = video.videoWidth * ratio;
-          const drawHeight = video.videoHeight * ratio;
-
-          const x = (smallWidth - drawWidth) / 2;
-          const y = (smallHeight - drawHeight) / 2;
-
-          smallCtx.drawImage(video, x, y, drawWidth, drawHeight);
-        }
-
-        // Desactivar suavizado al ampliar
-        ctx.imageSmoothingEnabled = false;
-        ctx.clearRect(0, 0, width, height);
-
-        ctx.drawImage(smallCanvas, 0, 0, width, height);
-      }
-
-      animationId = requestAnimationFrame(drawPixelatedFrame);
+    if (resume.playing) {
+      video.play().catch(() => {
+        console.warn("El navegador bloqueó la reproducción automática.");
+      });
     }
-
-    drawPixelatedFrame();
-
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
-  }, [filter, src, videoRef]);
+  }
 
   // ========================================
-  // CONTROLES DE REPRODUCCIÓN
+  // REPRODUCIR / PAUSAR
   // ========================================
 
   function togglePlay() {
@@ -458,6 +416,10 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
     }
   }
 
+  // ========================================
+  // MOVER BARRA DE PROGRESO
+  // ========================================
+
   function handleSeek(event) {
     const video = videoRef.current;
 
@@ -469,14 +431,25 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
     setCurrentTime(time);
   }
 
+  // ========================================
+  // ACTIVAR / DESACTIVAR SONIDO
+  // ========================================
+
   function toggleMute() {
     const video = videoRef.current;
 
     if (!video) return;
 
-    video.muted = !video.muted;
-    setMuted(video.muted);
+    const nextMuted = !video.muted;
+
+    video.muted = nextMuted;
+
+    setMuted(nextMuted);
   }
+
+  // ========================================
+  // PANTALLA COMPLETA
+  // ========================================
 
   function toggleFullscreen() {
     const element = fullscreenRef.current;
@@ -490,29 +463,37 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
     }
   }
 
-  function handleVideoError() {
-    const video = videoRef.current;
-    const code = video?.error?.code;
+  // ========================================
+  // ERRORES DE VIDEO
+  // ========================================
+
+  function handleVideoError(event) {
+    const code = event.currentTarget.error?.code;
 
     let message = "No se pudo cargar el video.";
 
     if (code === 4) {
-      message = "Archivo no encontrado o formato de video no compatible.";
+      message = "Archivo no encontrado o formato incompatible.";
     }
 
     if (code === 3) {
-      message = "El navegador no pudo decodificar este video.";
+      message = "El navegador no pudo decodificar el video.";
     }
 
     setError(message);
   }
 
   // ========================================
-  // ESTILOS SEGÚN EL FILTRO
+  // ESTILOS DE LOS FILTROS
   // ========================================
 
   const videoStyle = {
-    filter: filter === "blur" ? "blur(6px)" : "none",
+    filter:
+      filter === "saturacion"
+        ? "saturate(1.8)"
+        : filter === "blur"
+          ? "blur(6px)"
+          : "none",
 
     transform: filter === "espejo" ? "scaleX(-1)" : "none",
   };
@@ -523,12 +504,16 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
       className="
         overflow-hidden
         rounded-xl
+
         border
         border-white/15
+
         bg-[#071327]
       "
     >
+      {/* ============================ */}
       {/* PANTALLA DEL VIDEO */}
+      {/* ============================ */}
 
       <div
         className="
@@ -540,6 +525,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
         "
       >
         <video
+          key={src}
           ref={videoRef}
           src={src}
           className="
@@ -551,32 +537,21 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
           style={videoStyle}
           preload="metadata"
           playsInline
+          muted={muted}
+          onLoadedMetadata={handleLoadedMetadata}
           onPlay={() => setPlaying(true)}
           onPause={() => setPlaying(false)}
           onEnded={() => setPlaying(false)}
           onTimeUpdate={(event) =>
             setCurrentTime(event.currentTarget.currentTime)
           }
-          onDurationChange={(event) =>
-            setDuration(event.currentTarget.duration || 0)
-          }
+          onDurationChange={(event) => {
+            const value = event.currentTarget.duration;
+
+            setDuration(Number.isFinite(value) ? value : 0);
+          }}
           onError={handleVideoError}
         />
-
-        {/* CAPA DEL PIXELADO */}
-
-        {filter === "pixelado" && (
-          <canvas
-            ref={canvasRef}
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              h-full
-              w-full
-            "
-          />
-        )}
 
         {/* MENSAJE DE ERROR */}
 
@@ -585,12 +560,15 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
             className="
               absolute
               inset-0
+
               flex
               flex-col
               items-center
               justify-center
               gap-3
+
               bg-[#071327]/95
+
               p-5
               text-center
             "
@@ -602,13 +580,16 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
         )}
       </div>
 
-      {/* BARRA DE CONTROLES */}
+      {/* ============================ */}
+      {/* CONTROLES DEL REPRODUCTOR */}
+      {/* ============================ */}
 
       <div
         className="
           flex
           flex-col
           gap-3
+
           bg-[#071327]
           p-4
         "
@@ -618,12 +599,9 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
         <input
           type="range"
           min="0"
-          max={Number.isFinite(duration) && duration > 0 ? duration : 0.1}
+          max={duration > 0 ? duration : 0.1}
           step="0.1"
-          value={Math.min(
-            currentTime,
-            Number.isFinite(duration) && duration > 0 ? duration : 0.1,
-          )}
+          value={Math.min(currentTime, duration > 0 ? duration : 0.1)}
           onChange={handleSeek}
           aria-label="Progreso del video"
           className="
@@ -658,6 +636,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
                 cursor-pointer
                 text-2xl
                 text-white
+
                 transition
                 hover:text-red-400
               "
@@ -665,7 +644,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
               {playing ? "⏸" : "▶"}
             </button>
 
-            {/* VOLUMEN */}
+            {/* SONIDO */}
 
             <button
               type="button"
@@ -675,6 +654,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
                 cursor-pointer
                 text-xl
                 text-white
+
                 transition
                 hover:text-red-400
               "
@@ -689,6 +669,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
                 text-xs
                 font-semibold
                 text-white/70
+
                 sm:text-sm
               "
             >
@@ -708,6 +689,7 @@ function VideoPlayer({ videoRef, resumeRef, src, filter }) {
               cursor-pointer
               text-xl
               text-white
+
               transition
               hover:text-red-400
             "
@@ -735,6 +717,7 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
         rounded-xl
         border-2
         shadow-lg
+
         transition-all
         duration-300
 
@@ -754,13 +737,15 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
           block
           h-62.5
           w-full
+
           cursor-pointer
           overflow-hidden
+
           bg-[#1a2b4c]
           text-left
         "
       >
-        {/* VISTA PREVIA DEL VIDEO */}
+        {/* VISTA PREVIA */}
 
         <video
           key={previewUrl}
@@ -772,19 +757,23 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
             h-full
             w-full
             object-cover
+
             transition-transform
             duration-300
+
             group-hover:scale-105
           "
         />
 
-        {/* SOMBRA INFERIOR */}
+        {/* DEGRADADO */}
 
         <div
           className="
             pointer-events-none
+
             absolute
             inset-0
+
             bg-linear-to-t
             from-[#02112d]/95
             via-transparent
@@ -792,13 +781,15 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
           "
         />
 
-        {/* ICONO DE REPRODUCCIÓN */}
+        {/* ICONO DE PLAY */}
 
         <div
           className="
             pointer-events-none
+
             absolute
             inset-0
+
             flex
             items-center
             justify-center
@@ -813,10 +804,12 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
               justify-center
 
               rounded-full
+
               border
               border-white/30
 
               bg-[#02112d]/70
+
               text-2xl
               text-white
 
@@ -832,14 +825,16 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
           </div>
         </div>
 
-        {/* INFORMACIÓN DEL VIDEO */}
+        {/* INFORMACIÓN */}
 
         <div
           className="
             pointer-events-none
+
             absolute
             bottom-0
             left-0
+
             w-full
             p-5
           "
@@ -870,19 +865,24 @@ export function GalleryCard({ item, selected, withParticles, onSelect }) {
           </p>
         </div>
 
-        {/* INDICADOR DE SELECCIÓN */}
+        {/* VIDEO SELECCIONADO */}
 
         {selected && (
           <div
             className="
               pointer-events-none
+
               absolute
               right-3
               top-3
+
               rounded-full
+
               bg-red-600
+
               px-3
               py-1
+
               text-xs
               font-bold
               text-white
