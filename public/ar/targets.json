@@ -14,7 +14,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 1,
@@ -24,7 +24,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 2,
@@ -34,7 +34,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 3,
@@ -44,7 +44,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 4,
@@ -54,7 +54,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 5,
@@ -64,7 +64,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 6,
@@ -74,7 +74,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": false,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 7,
@@ -84,7 +84,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": true,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 8,
@@ -94,7 +94,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": true,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         },
         {
           "index": 9,
@@ -104,7 +104,7 @@
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
           "animate": true,
-          "rotateSpeed": 0
+          "rotateSpeed": 0.8
         }
       ]
     }
