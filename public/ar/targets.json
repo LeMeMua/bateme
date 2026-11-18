@@ -49,7 +49,7 @@
         {
           "index": 4,
           "name": "Dodgers - LA azul",
-          "model": "/glb/copa.fbx",
+          "model": "/glb/copa.glb",
           "size": 0.75,
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
@@ -59,7 +59,7 @@
         {
           "index": 5,
           "name": "Dodgers - LA fondo azul",
-          "model": "/glb/copa.fbx",
+          "model": "/glb/copa.glb",
           "size": 0.75,
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
@@ -69,7 +69,7 @@
         {
           "index": 6,
           "name": "Dodgers - LA contorno",
-          "model": "/glb/copa.fbx",
+          "model": "/glb/copa.glb",
           "size": 0.75,
           "position": [0, 0, 0.1],
           "rotation": [0, 0, 0],
