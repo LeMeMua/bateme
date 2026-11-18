@@ -1,4 +1,5 @@
 import react, { reactCompilerPreset } from "@vitejs/plugin-react";
+import mkcert from "vite-plugin-mkcert";
 import babel from "@rolldown/plugin-babel";
 import { defineConfig } from "vite";
 import tailwindcss from "@tailwindcss/vite";
@@ -8,6 +9,15 @@ export default defineConfig({
   plugins: [
     react(),
     tailwindcss(),
-    babel({ presets: [reactCompilerPreset()] }),
+    mkcert(),
+    babel({
+      presets: [reactCompilerPreset()],
+    }),
   ],
+
+  server: {
+    host: "0.0.0.0",
+    port: 5173,
+    strictPort: true,
+  },
 });
